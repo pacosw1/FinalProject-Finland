@@ -8,6 +8,7 @@ class SideBar extends Component {
     };
     return (
       <div className="split left">
+        <div className="container" />
         <ListItem />
       </div>
     );
