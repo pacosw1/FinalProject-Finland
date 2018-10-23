@@ -3,15 +3,21 @@ import ListItem from "./ListItem";
 
 class SideBar extends Component {
   render() {
-    const list = this.props.items.map((item, index) => {
+    const list = this.props.items.map(item => {
       return (
-        <ListItem
-          key={index}
-          customer={item.name}
-          complexity={item.complexity}
-          estimatedT={item.estimatedT}
-          parts={item.parts}
-        />
+        <li
+          key={item.id}
+          onClick={() => {
+            this.props.handleClick(item.id);
+          }}
+        >
+          <ListItem
+            customer={item.name}
+            complexity={item.complexity}
+            estimatedT={item.estimatedT}
+            parts={item.parts}
+          />
+        </li>
       );
     });
     return (
