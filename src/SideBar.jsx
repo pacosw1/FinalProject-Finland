@@ -15,7 +15,6 @@ class SideBar extends Component {
             customer={item.name}
             complexity={item.complexity}
             estimatedT={item.estimatedT}
-            parts={item.parts}
           />
         </li>
       );
