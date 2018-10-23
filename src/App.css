@@ -51,12 +51,11 @@ li:hover {
   margin-bottom: 0rem;
 }
 .table {
-  width: 100%;
+  width: 50%;
   border-bottom: solid;
 }
 .split {
   height: 89%;
-
   position: fixed;
   z-index: 1;
   top: 1;
