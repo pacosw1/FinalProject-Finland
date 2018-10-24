@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import SideBar from "./SideBar";
-import ContentDisplay from "./ContentDisplay";
+import SideBar from "./components/SideBar";
+import ContentDisplay from "./components/ContentDisplay";
 import "bootstrap/dist/css/bootstrap.css";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 
 class App extends Component {
   constructor(props) {
@@ -12,33 +12,44 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.state = {
       items: itemList,
-      currentItem: itemList[0]
+      currentItem: itemList[0],
+      itemParts: [],
+      currentPart: {}
     };
   }
 
   fetchById(id) {
-    const obj = {
-      length: 10,
-      width: 20,
-      thickness: 0.2
-    };
     //this method finds and returns the object with matching id
     return this.state.items.find(item => item.id === id);
   }
   handleClick(id) {
+    const curr = this.fetchById(id);
     //when listItem clicked set the matching id item with currentItem in state
-    this.setState({ currentItem: this.fetchById(id) });
+    this.setState({
+      currentItem: curr,
+      itemParts: curr.parts,
+      currentPart: curr.parts[0]
+    });
     //console.log(this.fetchById(id));
   }
+
   renderContent() {
-    return <ContentDisplay current={this.state.currentItem} />;
+    return (
+      <ContentDisplay
+        parts={this.state.itemParts}
+        currentPart={this.state.currentPart}
+        customer={this.state.currentItem.name}
+      />
+    );
   }
 
   render() {
+    console.log(this.state.itemParts.length);
     return (
       <div>
         <NavBar />
-        {this.renderContent()}
+        {this.state.itemParts.length >= 1 && this.renderContent()}
+
         <SideBar handleClick={this.handleClick} items={this.state.items} />
       </div>
     );
@@ -49,12 +60,12 @@ const itemList = [
   {
     id: "h11jbbj21",
     name: "Luke",
-    parts: "20",
     complexity: "E",
     estimatedT: "1",
     testDetail: "Should display in content view",
     parts: [
       {
+        id: "234234",
         material: "aluminum",
         picture: "url/",
         dimensions: {
@@ -65,6 +76,23 @@ const itemList = [
         features: [
           {
             name: "hole",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
             quantity: 10,
             time: 20
           }
@@ -80,6 +108,7 @@ const itemList = [
     testDetail: "Should display in content view",
     parts: [
       {
+        id: "213246",
         material: "aluminum",
         picture: "url/",
         dimensions: {
@@ -105,6 +134,7 @@ const itemList = [
     testDetail: "Should display in content view",
     parts: [
       {
+        id: "ff412",
         material: "notALuminum",
         picture: "url/",
         dimensions: {
@@ -115,6 +145,23 @@ const itemList = [
         features: [
           {
             name: "xd",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
             quantity: 10,
             time: 20
           }
@@ -130,6 +177,92 @@ const itemList = [
     testDetail: "Should display in content view",
     parts: [
       {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
+        material: "Null",
+        picture: "url/",
+        dimensions: {
+          length: 10,
+          width: 20,
+          thickness: 30
+        },
+        features: [
+          {
+            name: "Hey",
+            quantity: 10,
+            time: 20
+          }
+        ]
+      },
+      {
+        id: "9342f",
         material: "Null",
         picture: "url/",
         dimensions: {
