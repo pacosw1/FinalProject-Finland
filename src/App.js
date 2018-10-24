@@ -4,20 +4,27 @@ import SideBar from "./components/SideBar";
 import ContentDisplay from "./components/ContentDisplay";
 import "bootstrap/dist/css/bootstrap.css";
 import NavBar from "./components/NavBar";
+import { getData } from "./components/FakeData";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.fetchById = this.fetchById.bind(this);
+    this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.state = {
-      items: itemList,
-      currentItem: itemList[0],
+      items: [], //offers retrieved from fake data base.
+      currentItem: {}, //the current item is initialized with
       itemParts: [],
       currentPart: {}
     };
+  }
+
+  componentWillMount() {
+    this.setState({
+      items: getData()
+    });
   }
 
   fetchById(id) {
@@ -36,22 +43,21 @@ class App extends Component {
   }
 
   handleNext(index) {
-    // alert("working")
+    //child component Content fires event handler and is handled by Parent App Component.
     this.setState({
       currentPart: this.state.itemParts[index + 1]
     });
   }
 
   handlePrev(index) {
-    this.setState(
-      {
-        currentPart: this.state.itemParts[index - 1]
-      },
-      () => console.log(this.state.currentPart)
-    );
+    //^^
+    this.setState({
+      currentPart: this.state.itemParts[index - 1] //back button so the currentPart is su
+    });
   }
 
   renderContent() {
+    //this function renders the Content component and passes all neccesary props to display item data
     return (
       <ContentDisplay
         parts={this.state.itemParts}
@@ -64,174 +70,15 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.itemParts.length);
     return (
       <div>
         <NavBar />
-        {this.state.itemParts.length >= 1 && this.renderContent()}
+        {//this condition statement prevents App crashing when props sent to Content are of value null, or empty
+        this.state.itemParts.length >= 1 && this.renderContent()}
 
         <SideBar handleClick={this.handleClick} items={this.state.items} />
       </div>
     );
   }
 }
-const itemList = [
-  //hard-coded test data
-  {
-    id: "h11jbbj21",
-    name: "Luke",
-    complexity: "E",
-    estimatedT: "1",
-    testDetail: "Should display in content view",
-    parts: [
-      {
-        id: "234234",
-        material: "aluminum",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "hole",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "h12jbbj2L",
-    name: "Matthew",
-    complexity: "E",
-    estimatedT: "1",
-    testDetail: "Should display in content view",
-    parts: [
-      {
-        id: "213246",
-        material: "aluminum",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "hole",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "Mm12323",
-    name: "John",
-    complexity: "E",
-    estimatedT: "1",
-    testDetail: "Should display in content view",
-    parts: [
-      {
-        id: "ff412",
-        material: "notALuminum",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 2,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "xd",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "h12jbb3",
-    name: "Robert",
-    complexity: "E",
-    estimatedT: "1",
-    testDetail: "Should display in content view",
-    parts: [
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "ewe",
-        material: "Xd",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      }
-    ]
-  }
-];
-
 export default App;

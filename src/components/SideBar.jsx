@@ -4,6 +4,7 @@ import ListItem from "./ListItem";
 class SideBar extends Component {
   render() {
     const list = this.props.items.map(item => {
+      //takes items passed down by app and formats them into li with event handlers
       return (
         <li
           key={item.id}
