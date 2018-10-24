@@ -10,6 +10,8 @@ class App extends Component {
     super(props);
     this.fetchById = this.fetchById.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
     this.state = {
       items: itemList,
       currentItem: itemList[0],
@@ -33,12 +35,30 @@ class App extends Component {
     //console.log(this.fetchById(id));
   }
 
+  handleNext(index) {
+    // alert("working")
+    this.setState({
+      currentPart: this.state.itemParts[index + 1]
+    });
+  }
+
+  handlePrev(index) {
+    this.setState(
+      {
+        currentPart: this.state.itemParts[index - 1]
+      },
+      () => console.log(this.state.currentPart)
+    );
+  }
+
   renderContent() {
     return (
       <ContentDisplay
         parts={this.state.itemParts}
         currentPart={this.state.currentPart}
         customer={this.state.currentItem.name}
+        handleNext={this.handleNext}
+        handlePrev={this.handlePrev}
       />
     );
   }
@@ -194,76 +214,8 @@ const itemList = [
         ]
       },
       {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
-        picture: "url/",
-        dimensions: {
-          length: 10,
-          width: 20,
-          thickness: 30
-        },
-        features: [
-          {
-            name: "Hey",
-            quantity: 10,
-            time: 20
-          }
-        ]
-      },
-      {
-        id: "9342f",
-        material: "Null",
+        id: "ewe",
+        material: "Xd",
         picture: "url/",
         dimensions: {
           length: 10,
