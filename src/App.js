@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
+    this.onDelete = this.onDelete.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.state = {
@@ -21,6 +22,22 @@ class App extends Component {
     };
   }
 
+  onCreateFeature() {}
+
+  onDelete(toBeDeleted) {
+    //toBeDeleted = feature name
+    const currPart = this.state.currentPart;
+    const features = this.state.currentPart.features; //copy feature array to be deleted
+    const updatedFeatures = features.filter(
+      feature => feature.name !== toBeDeleted
+    );
+    currPart.features = [...updatedFeatures];
+
+    this.setState({
+      currentPart: currPart
+    });
+    console.log(toBeDeleted);
+  }
   componentWillMount() {
     this.setState({
       items: getData()
@@ -65,6 +82,7 @@ class App extends Component {
         customer={this.state.currentItem.name}
         handleNext={this.handleNext}
         handlePrev={this.handlePrev}
+        onDelete={this.onDelete}
       />
     );
   }

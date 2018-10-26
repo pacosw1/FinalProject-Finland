@@ -22,7 +22,9 @@ class SideBar extends Component {
     });
     return (
       <div className="split left">
-        <ul>{list}</ul>
+        <div className="container-fluid">
+          <ul>{list}</ul>
+        </div>
       </div>
     );
   }

@@ -14,8 +14,11 @@ class Table extends Component {
               style={style}
               className="custom-select"
               id="inputGroupSelect01"
-              defaultValue={feature.name}
-            />
+            >
+              <option value={feature.name} selected>
+                {feature.name}
+              </option>
+            </select>
           </th>
 
           <th scope="col" style={{ width: "10rem" }}>
@@ -43,7 +46,12 @@ class Table extends Component {
             </div>
           </th>
           <th scope="col">
-            <button className="btn btn-outline-danger">Delete </button>
+            <button
+              onClick={() => this.props.onDelete(feature.name)}
+              className="btn btn-outline-danger"
+            >
+              Delete{" "}
+            </button>
           </th>
         </tr>
       );

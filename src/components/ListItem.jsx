@@ -10,7 +10,7 @@ class ListItem extends Component {
               <th scope="col">{this.props.customer}</th>
               <th scope="col">Parts</th>
               <th scope="col">Complexity</th>
-              <th scope="col">Est. Time</th>
+              <th scope="col">Time</th>
             </tr>
           </thead>
           <tbody>
