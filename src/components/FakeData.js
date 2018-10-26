@@ -89,8 +89,8 @@ export function getData() {
           features: [
             {
               name: "xd",
-              quantity: 10,
-              time: 20
+              quantity: 2.5,
+              time: 2
             }
           ]
         },

@@ -16,7 +16,7 @@ function ContentDisplay(props) {
         <h1>{props.customer}</h1>
         <a href="index.js">See Customer History</a>
       </div>
-      <table className="table table-borderless">
+      <table className="table table-borderless ">
         <thead>
           <tr>
             <th scope="col">Material</th>
@@ -30,27 +30,34 @@ function ContentDisplay(props) {
             <th scope="col">Dimensions</th>
           </tr>
           <tr>
-            <th scope="col">Length</th>
+            <th scope="col">
+              <p>Length</p>
+            </th>
             <th scope="col">Width</th>
             <th scope="col">Thickness</th>
           </tr>
 
           <tr>
-            <th scope="col">{dims.length}</th>
-            <th scope="col">{dims.width}</th>
-            <th scope="col">{dims.thickness}</th>
+            <td scope="col">{dims.length}</td>
+            <td scope="col">{dims.width}</td>
+            <td scope="col">{dims.thickness}</td>
           </tr>
 
           <tr />
         </tbody>
       </table>
-      <span>
+      <span style={{ borderStyle: "solid 2px" }}>
         {index + 1} out of {parts.length}
       </span>
-      <button disabled={index === 0} onClick={() => props.handlePrev(index)}>
+      <button
+        className="btn btn-outline-primary"
+        disabled={index === 0}
+        onClick={() => props.handlePrev(index)}
+      >
         Prev
       </button>
       <button
+        className="btn btn-outline-primary"
         disabled={index === parts.length - 1}
         onClick={() => props.handleNext(index)}
       >
@@ -58,6 +65,7 @@ function ContentDisplay(props) {
       </button>
 
       <Table features={currPart.features} />
+
       <div />
     </div>
   );
