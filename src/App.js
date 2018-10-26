@@ -11,7 +11,9 @@ class App extends Component {
     super(props);
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
+    this.onCreateFeature = this.onCreateFeature.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onSaveData = this.onSaveData.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.state = {
@@ -22,8 +24,9 @@ class App extends Component {
     };
   }
 
-  onCreateFeature() {}
+  //onCreateFeature() {}
 
+  onSaveData(parts) {}
   onDelete(toBeDeleted) {
     //toBeDeleted = feature name
     const currPart = this.state.currentPart;
@@ -41,6 +44,19 @@ class App extends Component {
   componentWillMount() {
     this.setState({
       items: getData()
+    });
+  }
+
+  onCreateFeature() {
+    const newFeature = {
+      name: "",
+      quantity: "",
+      time: ""
+    };
+    const currPart = this.state.currentPart;
+    currPart.features.push(newFeature);
+    this.setState({
+      currentPart: currPart
     });
   }
 
@@ -83,6 +99,8 @@ class App extends Component {
         handleNext={this.handleNext}
         handlePrev={this.handlePrev}
         onDelete={this.onDelete}
+        onCreateFeature={this.onCreateFeature}
+        onSaveData={this.onSaveData}
       />
     );
   }

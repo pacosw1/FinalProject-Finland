@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
 class Table extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    this.props.updateValue();
+  }
   render() {
     const style = {
       width: "8rem"
@@ -11,20 +17,23 @@ class Table extends Component {
         <tr key={index}>
           <th scope="col">
             <select
+              name="name"
               style={style}
               className="custom-select"
               id="inputGroupSelect01"
+              defaultValue={feature.name}
+              onChange={e => this.props.updateValue(e)}
             >
-              <option value={feature.name} selected>
-                {feature.name}
-              </option>
+              <option>{feature.name}</option>
             </select>
           </th>
 
           <th scope="col" style={{ width: "10rem" }}>
             <div className="input-group mb-3">
               <input
-                value={feature.quantity}
+                name="quantity"
+                onChange={e => this.props.updateValue(e)}
+                defaultValue={feature.quantity}
                 type="text"
                 className="form-control"
                 placeholder=""
@@ -36,7 +45,9 @@ class Table extends Component {
           <th scope="col" style={{ width: "10rem" }}>
             <div className="input-group mb-3">
               <input
-                value={feature.time}
+                name="time"
+                onChange={e => this.props.updateValue(e)}
+                defaultValue={feature.time}
                 type="text"
                 className="form-control"
                 placeholder=""
@@ -57,7 +68,7 @@ class Table extends Component {
       );
     });
     return (
-      <table className="table ">
+      <table className="table table-borderless">
         <thead>
           <tr>
             <th scope="col">Feature</th>
@@ -68,7 +79,12 @@ class Table extends Component {
         </thead>
         <tbody>{features}</tbody>
         <th>
-          <button className="btn btn-outline-primary">Add Feature</button>
+          <button
+            onClick={this.props.onCreateFeature}
+            className="btn btn-outline-primary"
+          >
+            Add Feature
+          </button>
         </th>
       </table>
     );
