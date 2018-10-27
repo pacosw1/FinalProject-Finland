@@ -36,7 +36,7 @@ class App extends Component {
       itemParts: [],
       currentPart: {},
       selectionState: [],
-      tabState: [0, 0, 0]
+      tabState: [1, 0, 0]
     };
   }
 
