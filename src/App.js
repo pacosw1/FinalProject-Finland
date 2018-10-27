@@ -11,8 +11,9 @@ class App extends Component {
     super(props);
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
-    this.onCreateFeature = this.onCreateFeature.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.updateValue = this.updateValue.bind(this);
+    this.onCreateFeature = this.onCreateFeature.bind(this);
     this.onSaveData = this.onSaveData.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
@@ -20,43 +21,62 @@ class App extends Component {
       items: [], //offers retrieved from fake data base.
       currentItem: {}, //the current item is initialized with
       itemParts: [],
-      currentPart: {}
+      currentPart: {},
+      selectionState: []
     };
   }
 
-  //onCreateFeature() {}
-
-  onSaveData(parts) {}
-  onDelete(toBeDeleted) {
-    //toBeDeleted = feature name
-    const currPart = this.state.currentPart;
-    const features = this.state.currentPart.features; //copy feature array to be deleted
-    const updatedFeatures = features.filter(
-      feature => feature.name !== toBeDeleted
-    );
-    currPart.features = [...updatedFeatures];
-
+  updateValue(e, f) {
+    const curr = this.state.currentPart;
+    const updated = curr.features;
+    console.log(e.target.id);
+    const index = updated.indexOf(f);
+    console.log("index:", index);
+    updated[index][e.target.name] = e.target.value;
+    curr.features = updated;
     this.setState({
-      currentPart: currPart
+      currentPart: curr
     });
-    console.log(toBeDeleted);
   }
+  //onCreateFeature() {}
+  onDelete(id) {
+    const curr = this.state.currentPart;
+    const features = curr.features;
+    const updated = features.filter(feature => feature.id !== id);
+    curr.features = updated;
+    this.setState(
+      {
+        currentPart: curr
+      },
+      console.log(updated)
+    );
+  }
+  onCreateFeature() {
+    const newFeature = {
+      id: Date.now(),
+      name: "",
+      quantity: "",
+      time: ""
+    };
+    const curr = this.state.currentPart;
+    const updated = curr.features;
+
+    updated.push(newFeature);
+    curr.features = updated;
+    this.setState({
+      currentPart: curr
+    });
+  }
+  onSaveData(parts) {}
+
   componentWillMount() {
     this.setState({
       items: getData()
     });
   }
-
-  onCreateFeature() {
-    const newFeature = {
-      name: "",
-      quantity: "",
-      time: ""
-    };
-    const currPart = this.state.currentPart;
-    currPart.features.push(newFeature);
+  componentDidMount() {
     this.setState({
-      currentPart: currPart
+      selectionState: new Array(this.state.items.length).fill(0)
     });
   }
 
@@ -65,9 +85,17 @@ class App extends Component {
     return this.state.items.find(item => item.id === id);
   }
   handleClick(id) {
+    console.log(id);
+    const { items, currentItem, selectionState } = this.state;
+    const index = items.findIndex(x => x.id === id);
+    selectionState.fill(0);
+    selectionState[index] = 1;
+
     const curr = this.fetchById(id);
     //when listItem clicked set the matching id item with currentItem in state
+
     this.setState({
+      selectionState: selectionState,
       currentItem: curr,
       itemParts: curr.parts,
       currentPart: curr.parts[0]
@@ -99,6 +127,7 @@ class App extends Component {
         handleNext={this.handleNext}
         handlePrev={this.handlePrev}
         onDelete={this.onDelete}
+        updateValue={this.updateValue}
         onCreateFeature={this.onCreateFeature}
         onSaveData={this.onSaveData}
       />
@@ -112,7 +141,11 @@ class App extends Component {
         {//this condition statement prevents App crashing when props sent to Content are of value null, or empty
         this.state.itemParts.length >= 1 && this.renderContent()}
 
-        <SideBar handleClick={this.handleClick} items={this.state.items} />
+        <SideBar
+          selected={this.state.selectionState}
+          handleClick={this.handleClick}
+          items={this.state.items}
+        />
       </div>
     );
   }

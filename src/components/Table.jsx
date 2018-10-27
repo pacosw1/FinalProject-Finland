@@ -5,8 +5,8 @@ class Table extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.updateValue();
+  componentWillReceiveProps() {
+    this.forceUpdate();
   }
   render() {
     const style = {
@@ -14,15 +14,15 @@ class Table extends Component {
     };
     const features = this.props.features.map((feature, index) => {
       return (
-        <tr key={index}>
+        <tr key={feature.id + "" + Date.now()}>
           <th scope="col">
             <select
               name="name"
+              id={feature.id}
               style={style}
               className="custom-select"
-              id="inputGroupSelect01"
               defaultValue={feature.name}
-              onChange={e => this.props.updateValue(e)}
+              onChange={e => this.props.updateValue(e, feature)}
             >
               <option>{feature.name}</option>
             </select>
@@ -32,7 +32,8 @@ class Table extends Component {
             <div className="input-group mb-3">
               <input
                 name="quantity"
-                onChange={e => this.props.updateValue(e)}
+                id={feature.id}
+                onChange={e => this.props.updateValue(e, feature)}
                 defaultValue={feature.quantity}
                 type="text"
                 className="form-control"
@@ -45,8 +46,9 @@ class Table extends Component {
           <th scope="col" style={{ width: "10rem" }}>
             <div className="input-group mb-3">
               <input
+                id={feature.id}
                 name="time"
-                onChange={e => this.props.updateValue(e)}
+                onChange={e => this.props.updateValue(e, feature)}
                 defaultValue={feature.time}
                 type="text"
                 className="form-control"
@@ -58,7 +60,7 @@ class Table extends Component {
           </th>
           <th scope="col">
             <button
-              onClick={() => this.props.onDelete(feature.name)}
+              onClick={() => this.props.onDelete(feature.id)}
               className="btn btn-outline-danger"
             >
               Delete{" "}
@@ -68,7 +70,7 @@ class Table extends Component {
       );
     });
     return (
-      <table className="table table-borderless">
+      <table className="table table-borderless table-sm">
         <thead>
           <tr>
             <th scope="col">Feature</th>
@@ -77,15 +79,19 @@ class Table extends Component {
             <th scope="col" />
           </tr>
         </thead>
-        <tbody>{features}</tbody>
-        <th>
-          <button
-            onClick={this.props.onCreateFeature}
-            className="btn btn-outline-primary"
-          >
-            Add Feature
-          </button>
-        </th>
+        <tbody>
+          {features}
+
+          <th scope="col">
+            <button
+              style={style}
+              onClick={this.props.onCreateFeature}
+              className="btn btn-outline-primary"
+            >
+              Add Feature
+            </button>
+          </th>
+        </tbody>
       </table>
     );
   }

@@ -19,6 +19,7 @@ export function getData() {
           },
           features: [
             {
+              id: "234234",
               name: "hole",
               quantity: 10,
               time: 20
@@ -36,6 +37,7 @@ export function getData() {
           },
           features: [
             {
+              id: "54674",
               name: "Hey",
               quantity: 10,
               time: 20
@@ -62,6 +64,7 @@ export function getData() {
           },
           features: [
             {
+              id: "345456",
               name: "hole",
               quantity: 10,
               time: 20
@@ -88,6 +91,7 @@ export function getData() {
           },
           features: [
             {
+              id: "76543421",
               name: "xd",
               quantity: 2.5,
               time: 2
@@ -105,6 +109,7 @@ export function getData() {
           },
           features: [
             {
+              id: "877654",
               name: "Hey",
               quantity: 10,
               time: 20
@@ -131,6 +136,7 @@ export function getData() {
           },
           features: [
             {
+              id: "1111123",
               name: "Hey",
               quantity: 10,
               time: 20
@@ -148,6 +154,7 @@ export function getData() {
           },
           features: [
             {
+              id: "",
               name: "Hey",
               quantity: 10,
               time: 20
