@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import ListItem from "./ListItem";
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const list = this.props.items.map((item, index) => {
       //takes items passed down by app and formats them into li with event handlers
@@ -33,32 +30,37 @@ class SideBar extends Component {
           <div>
             <h5 id="headTitle">Queue ({this.props.items.length})</h5>
             <br />
-            <ButtonGroup left="New" mid="In Progress" right="completed" />
+            <div>
+              <nav
+                style={{ marginBottom: "3rem" }}
+                className="nav nav-pills flex-column flex-sm-row"
+              >
+                <a
+                  onClick={() => this.props.renderData("unread")}
+                  class="flex-sm-fill text-sm-center nav-link"
+                >
+                  Unread
+                </a>
+                <a
+                  onClick={() => this.props.renderData("opened")}
+                  className="flex-sm-fill text-sm-center nav-link"
+                >
+                  Opened
+                </a>
+                <a
+                  onClick={() => this.props.renderData("completed")}
+                  className="flex-sm-fill text-sm-center nav-link"
+                >
+                  Completed
+                </a>
+              </nav>
+              <ul>{list}</ul>
+            </div>
           </div>
-
-          <ul>{list}</ul>
         </div>
       </div>
     );
   }
-}
-function ButtonGroup(props) {
-  return (
-    <nav
-      style={{ marginBottom: "3rem" }}
-      className="nav nav-pills flex-column flex-sm-row"
-    >
-      <a class="flex-sm-fill text-sm-center nav-link active" href="#">
-        Unread
-      </a>
-      <a className="flex-sm-fill text-sm-center nav-link" href="#">
-        Opened
-      </a>
-      <a className="flex-sm-fill text-sm-center nav-link" href="#">
-        Completed
-      </a>
-    </nav>
-  );
 }
 
 export default SideBar;

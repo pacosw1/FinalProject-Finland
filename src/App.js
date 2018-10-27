@@ -9,12 +9,13 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWrench,
+  faCoins,
   faClock,
   faTachometerAlt,
   faStar
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faWrench, faClock, faTachometerAlt, faStar);
+library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins);
 
 class App extends Component {
   constructor(props) {
@@ -27,8 +28,10 @@ class App extends Component {
     this.onSaveData = this.onSaveData.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.renderData = this.renderData.bind(this);
     this.state = {
       items: [], //offers retrieved from fake data base.
+      selectedItems: [],
       currentItem: {}, //the current item is initialized with
       itemParts: [],
       currentPart: {},
@@ -36,10 +39,15 @@ class App extends Component {
     };
   }
 
+  renderData(data) {
+    this.setState({
+      selectedItems: this.state.items.filter(x => x.status === data)
+    });
+  }
   updateValue(e, f) {
     const curr = this.state.currentPart;
     const updated = curr.features;
-    console.log(e.target.id);
+
     const index = updated.indexOf(f);
     console.log("index:", index);
     updated[index][e.target.name] = e.target.value;
@@ -85,6 +93,7 @@ class App extends Component {
     });
   }
   componentDidMount() {
+    this.renderData("unread");
     this.setState({
       selectionState: new Array(this.state.items.length).fill(0)
     });
@@ -95,13 +104,13 @@ class App extends Component {
     return this.state.items.find(item => item.id === id);
   }
   handleClick(id) {
-    console.log(id);
     const { items, currentItem, selectionState } = this.state;
     const index = items.findIndex(x => x.id === id);
     selectionState.fill(0);
     selectionState[index] = 1;
 
     const curr = this.fetchById(id);
+    curr.status = "opened";
     //when listItem clicked set the matching id item with currentItem in state
 
     this.setState({
@@ -154,7 +163,8 @@ class App extends Component {
         <SideBar
           selected={this.state.selectionState}
           handleClick={this.handleClick}
-          items={this.state.items}
+          items={this.state.selectedItems}
+          renderData={this.renderData}
         />
       </div>
     );

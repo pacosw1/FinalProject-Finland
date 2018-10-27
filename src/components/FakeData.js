@@ -3,6 +3,7 @@ export function getData() {
     //hard-coded test data
     {
       id: "h11jbbj21",
+      status: "unread",
       name: "Luke",
       complexity: "E",
       estimatedT: "1",
@@ -48,6 +49,7 @@ export function getData() {
     },
     {
       id: "h12jbbj2L",
+      status: "unread",
       name: "Matthew",
       complexity: "E",
       estimatedT: "1",
@@ -75,6 +77,7 @@ export function getData() {
     },
     {
       id: "Mm12323",
+      status: "unread",
       name: "John",
       complexity: "E",
       estimatedT: "1",
@@ -120,6 +123,7 @@ export function getData() {
     },
     {
       id: "h12jbb3",
+      status: "unread",
       name: "Robert",
       complexity: "E",
       estimatedT: "1",

@@ -3,11 +3,14 @@ import React, { Component } from "react";
 class Table extends Component {
   constructor(props) {
     super(props);
+    //this.onChange = this.onChange.bind(this);
+    this.state = {
+      name: "",
+      quantity: 0,
+      time: 0
+    };
   }
 
-  componentWillReceiveProps() {
-    this.forceUpdate();
-  }
   render() {
     const style = {
       width: "8rem"
@@ -18,7 +21,6 @@ class Table extends Component {
           <th scope="col">
             <select
               name="name"
-              id={feature.id}
               style={style}
               className="custom-select"
               defaultValue={feature.name}
@@ -32,14 +34,10 @@ class Table extends Component {
             <div className="input-group mb-3">
               <input
                 name="quantity"
-                id={feature.id}
-                onChange={e => this.props.updateValue(e, feature)}
                 defaultValue={feature.quantity}
                 type="text"
+                onChange={e => this.props.updateValue(e, feature)}
                 className="form-control"
-                placeholder=""
-                aria-label="Username"
-                aria-describedby="basic-addon1"
               />
             </div>
           </th>

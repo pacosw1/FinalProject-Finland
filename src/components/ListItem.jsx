@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ListItem extends Component {
   render() {
     var style = {};
-    console.log("active?", this.props.active);
+
     if (this.props.active) style = { backgroundColor: "#d1d1d1" };
 
     return (
@@ -16,7 +16,7 @@ class ListItem extends Component {
             </th>
           </tr>
           <th scope="col">
-            <FontAwesomeIcon icon="star" />
+            <FontAwesomeIcon icon="coins" />
           </th>
           <th scope="col">
             <FontAwesomeIcon icon="wrench" />
@@ -29,7 +29,7 @@ class ListItem extends Component {
             <FontAwesomeIcon icon="clock" />
           </th>
           <tr>
-            <td scope="col">G</td>
+            <td scope="col">50%</td>
             <td scope="col">{this.props.parts}</td>
             <td scope="col">{this.props.complexity}</td>
             <td scope="col">{this.props.estimatedT}</td>

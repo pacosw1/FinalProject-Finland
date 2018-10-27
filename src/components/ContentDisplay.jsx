@@ -8,6 +8,26 @@ class ContentDisplay extends Component {
     super(props);
   }
 
+  calculateTotalTime() {
+    //will calculate total time for all parts with all of their individual features
+    const parts = this.props.parts;
+
+    //console.log(parts);
+    var totalTime = 0;
+
+    for (var i = 0; i < parts.length; i++) {
+      //runs through all parts
+      var features = parts[i].features;
+
+      for (var j = 0; j < features.length; j++) {
+        var currFeature = features[j];
+        totalTime += currFeature.quantity * currFeature.time;
+      }
+    }
+    console.log(totalTime);
+    return Math.floor(totalTime / 24).toString() + " Days";
+  }
+
   render() {
     //render the current part
 
@@ -65,6 +85,25 @@ class ContentDisplay extends Component {
                 features={this.props.currentPart.features}
                 updateValue={this.props.updateValue}
               />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-4" style={{ margin: ".1rem" }}>
+              <p>Estimated Time:</p>
+              <p>{this.calculateTotalTime()}</p>
+            </div>
+            <div className="col-4" style={{ margin: ".1rem" }}>
+              <p>Customer Deadline:</p>
+
+              <p>{new Date().toString().substring(0, 15)}</p>
+            </div>
+            <div className="col-2 align-self-end">
+              <button
+                style={{ margin: "1rem", padding: "1rem" }}
+                className="btn btn-primary"
+              >
+                Send to Customer
+              </button>
             </div>
           </div>
           <div />
