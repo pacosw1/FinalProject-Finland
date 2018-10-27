@@ -13,11 +13,12 @@ ul {
   background-color: grey;
 }
 .listItem th {
-  width: 5rem;
+  margin: 5rem;
 }
 .listItem {
   background-color: white;
   padding: 1.5rem;
+
   width: 100%;
   height: 100%;
   width: 100%;
@@ -47,8 +48,6 @@ li:active {
 }
 
 .partNav {
-  padding-right: 2rem;
-  margin: 0.5rem;
 }
 .partNav span {
   margin-right: 2rem;

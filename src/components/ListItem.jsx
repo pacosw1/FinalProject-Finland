@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class ListItem extends Component {
   render() {
@@ -9,11 +10,26 @@ class ListItem extends Component {
     return (
       <div className="listItem" style={style}>
         <table className="table table-sm table-borderless">
-          <th scope="col">Parts</th>
-          <th scope="col">Complexity</th>
-          <th scope="col">Time</th>
+          <tr scope="row">
+            <th scope="col">
+              <a href="#">{this.props.customer}</a>
+            </th>
+          </tr>
+          <th scope="col">
+            <FontAwesomeIcon icon="star" />
+          </th>
+          <th scope="col">
+            <FontAwesomeIcon icon="wrench" />
+          </th>
+          <th scope="col">
+            <FontAwesomeIcon icon="tachometer-alt" />
+          </th>
 
+          <th scope="col">
+            <FontAwesomeIcon icon="clock" />
+          </th>
           <tr>
+            <td scope="col">G</td>
             <td scope="col">{this.props.parts}</td>
             <td scope="col">{this.props.complexity}</td>
             <td scope="col">{this.props.estimatedT}</td>

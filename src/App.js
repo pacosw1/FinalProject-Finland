@@ -5,6 +5,16 @@ import ContentDisplay from "./components/ContentDisplay";
 import "bootstrap/dist/css/bootstrap.css";
 import NavBar from "./components/NavBar";
 import { getData } from "./components/FakeData";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faWrench,
+  faClock,
+  faTachometerAlt,
+  faStar
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faWrench, faClock, faTachometerAlt, faStar);
 
 class App extends Component {
   constructor(props) {

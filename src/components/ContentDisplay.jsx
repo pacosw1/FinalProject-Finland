@@ -39,19 +39,19 @@ class ContentDisplay extends Component {
           <div className="row">
             <div className="col">
               <div className="partNav">
-                <span className="btn btn-outline-info">
+                <span className="">
                   Part {+index + 1} out of {parts.length}
                 </span>
                 <button
                   style={{ marginRight: ".5rem" }}
-                  className="btn btn-outline-primary"
+                  className="btn btn-link"
                   disabled={index === 0}
                   onClick={() => this.props.handlePrev(index)}
                 >
                   Prev
                 </button>
                 <button
-                  className="btn btn-outline-primary"
+                  className="btn btn-link"
                   disabled={index === parts.length - 1}
                   onClick={() => this.props.handleNext(index)}
                 >
