@@ -16,7 +16,7 @@ class PartDisplay extends Component {
                 <th scope="col">Material</th>
               </tr>
               <tr>
-                <th scope="col">Aluminum</th>
+                <td scope="col">{this.props.material}</td>
               </tr>
               <tr>
                 <th scope="col">Length</th>
