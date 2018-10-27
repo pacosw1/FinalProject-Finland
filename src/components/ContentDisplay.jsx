@@ -90,12 +90,12 @@ class ContentDisplay extends Component {
           <div className="row">
             <div className="col-4" style={{ margin: ".1rem" }}>
               <p>Estimated Time:</p>
-              <p>{this.calculateTotalTime()}</p>
+              <p>{new Date().toString().substring(3, 15)}</p>
             </div>
             <div className="col-4" style={{ margin: ".1rem" }}>
               <p>Customer Deadline:</p>
 
-              <p>{new Date().toString().substring(0, 15)}</p>
+              <p>Dec 21 2018</p>
             </div>
             <div className="col-2 align-self-end">
               <button

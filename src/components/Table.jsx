@@ -27,6 +27,9 @@ class Table extends Component {
               onChange={e => this.props.updateValue(e, feature)}
             >
               <option>{feature.name}</option>
+              <option>Punch Destroy Holes</option>
+              <option>Punch Single Holes</option>
+              <option>Threads</option>
             </select>
           </th>
 

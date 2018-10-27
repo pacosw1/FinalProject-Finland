@@ -35,14 +35,21 @@ class App extends Component {
       currentItem: {}, //the current item is initialized with
       itemParts: [],
       currentPart: {},
-      selectionState: []
+      selectionState: [],
+      tabState: [0, 0, 0]
     };
   }
 
-  renderData(data) {
-    this.setState({
-      selectedItems: this.state.items.filter(x => x.status === data)
-    });
+  renderData(data, id) {
+    const updatedTabState = new Array(3).fill(0);
+    updatedTabState[id] = 1;
+    this.setState(
+      {
+        tabState: updatedTabState,
+        selectedItems: this.state.items.filter(x => x.status === data)
+      },
+      console.log(this.state.selectedItems)
+    );
   }
   updateValue(e, f) {
     const curr = this.state.currentPart;
@@ -165,6 +172,7 @@ class App extends Component {
           handleClick={this.handleClick}
           items={this.state.selectedItems}
           renderData={this.renderData}
+          tabState={this.state.tabState}
         />
       </div>
     );

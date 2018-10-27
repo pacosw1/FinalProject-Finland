@@ -30,30 +30,11 @@ class SideBar extends Component {
           <div>
             <h5 id="headTitle">Queue ({this.props.items.length})</h5>
             <br />
+            <Tabs
+              tabState={this.props.tabState}
+              renderData={this.props.renderData}
+            />
             <div>
-              <nav
-                style={{ marginBottom: "3rem" }}
-                className="nav nav-pills flex-column flex-sm-row"
-              >
-                <a
-                  onClick={() => this.props.renderData("unread")}
-                  class="flex-sm-fill text-sm-center nav-link"
-                >
-                  Unread
-                </a>
-                <a
-                  onClick={() => this.props.renderData("opened")}
-                  className="flex-sm-fill text-sm-center nav-link"
-                >
-                  Opened
-                </a>
-                <a
-                  onClick={() => this.props.renderData("completed")}
-                  className="flex-sm-fill text-sm-center nav-link"
-                >
-                  Completed
-                </a>
-              </nav>
               <ul>{list}</ul>
             </div>
           </div>
@@ -61,6 +42,54 @@ class SideBar extends Component {
       </div>
     );
   }
+}
+
+function Tabs(props) {
+  return (
+    <nav
+      style={{ marginBottom: "3rem" }}
+      className="nav nav-pills flex-column flex-sm-row"
+    >
+      <Link
+        id={0}
+        title="unread"
+        active={props.tabState[0]}
+        renderData={props.renderData}
+        class="flex-sm-fill text-sm-center nav-link"
+      />
+      <Link
+        id={1}
+        title="opened"
+        active={props.tabState[1]}
+        renderData={props.renderData}
+        class="flex-sm-fill text-sm-center nav-link"
+      />
+      <Link
+        title="completed"
+        id={2}
+        active={props.tabState[2]}
+        renderData={props.renderData}
+        class="flex-sm-fill text-sm-center nav-link"
+      />
+    </nav>
+  );
+}
+
+function Link(props) {
+  var style;
+  if (props.active) style = { backgroundColor: "#d1d1d1" };
+  return (
+    <React.Fragment>
+      <a
+        style={style}
+        active={props.active}
+        onClick={() => props.renderData(props.title, props.id)}
+        className="flex-sm-fill text-sm-center nav-link"
+      >
+        {props.title}
+      </a>
+    </React.Fragment>
+  );
 }
 
 export default SideBar;
