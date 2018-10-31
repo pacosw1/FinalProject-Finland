@@ -5,11 +5,11 @@ class PartDisplay extends Component {
     {
     }
     return (
-      <div className="row">
+      <React.Fragment>
         <div className="col-lg-3 col-md-3 col-sm-12">
           <Image />
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-6">
+        <div className="col-sm-12 col-md-6 col-lg-3">
           <table className="table table-borderless table-sm ">
             <thead>
               <tr>
@@ -60,7 +60,7 @@ class PartDisplay extends Component {
             </tbody>
           </table>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

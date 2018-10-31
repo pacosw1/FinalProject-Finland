@@ -4,7 +4,8 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark ">
-        <span className="navbar-brand">Navbar</span>
+        <button onClick={() => this.props.menu()}>Menu</button>
+
         <button
           className="navbar-toggler"
           type="button"

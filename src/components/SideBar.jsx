@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import ListItem from "./ListItem";
 
 class SideBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const list = this.props.items.map((item, index) => {
       //takes items passed down by app and formats them into li with event handlers
@@ -25,7 +29,11 @@ class SideBar extends Component {
       );
     });
     return (
-      <div className="split left" style={{ backgroundColor: "#F8F8F8	" }}>
+      <div
+        id="sidebar"
+        className="split left move"
+        style={{ backgroundColor: "#F8F8F8	" }}
+      >
         <div className="container">
           <div>
             <h5 id="headTitle">Queue ({this.props.items.length})</h5>
@@ -47,6 +55,7 @@ class SideBar extends Component {
 function Tabs(props) {
   return (
     <nav
+      className="move"
       style={{ marginBottom: "3rem" }}
       className="nav nav-pills flex-column flex-sm-row"
     >

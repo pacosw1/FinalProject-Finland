@@ -8,31 +8,31 @@ class ListItem extends Component {
     if (this.props.active) style = { backgroundColor: "#d1d1d1" };
 
     return (
-      <div className="listItem" style={style}>
+      <div className="listItem move" style={style}>
         <table className="table table-sm table-borderless">
-          <tr scope="row">
-            <th scope="col">
+          <tr>
+            <th>
               <a href="#">{this.props.customer}</a>
             </th>
           </tr>
-          <th scope="col">
+          <th>
             <FontAwesomeIcon icon="coins" />
           </th>
-          <th scope="col">
+          <th>
             <FontAwesomeIcon icon="wrench" />
           </th>
-          <th scope="col">
+          <th>
             <FontAwesomeIcon icon="tachometer-alt" />
           </th>
 
-          <th scope="col">
+          <th>
             <FontAwesomeIcon icon="clock" />
           </th>
           <tr>
-            <td scope="col">50%</td>
-            <td scope="col">{this.props.parts}</td>
-            <td scope="col">{this.props.complexity}</td>
-            <td scope="col">{this.props.estimatedT}</td>
+            <td>50%</td>
+            <td>{this.props.parts}</td>
+            <td>{this.props.complexity}</td>
+            <td>{this.props.estimatedT}</td>
           </tr>
         </table>
       </div>

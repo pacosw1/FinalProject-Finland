@@ -20,6 +20,7 @@ library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins);
 class App extends Component {
   constructor(props) {
     super(props);
+    this.menu = this.menu.bind(this);
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -36,8 +37,29 @@ class App extends Component {
       itemParts: [],
       currentPart: {},
       selectionState: [],
-      tabState: [1, 0, 0]
+      tabState: [1, 0, 0],
+      opened: true,
+      openedContent: false
     };
+  }
+
+  menu() {
+    var side = document.getElementById("sidebar");
+    var content = document.getElementById("content");
+    if (this.state.opened) {
+      side.style.height = "0";
+      side.style.padding = "0";
+      // side.style.width = "0%";
+      content.style.width = "100%";
+    } else {
+      side.style.padding = "1rem";
+      side.style.height = "100%";
+      content.style.width = "60%";
+    }
+
+    this.setState({
+      opened: !this.state.opened
+    });
   }
 
   renderData(data, id) {
@@ -143,38 +165,34 @@ class App extends Component {
     });
   }
 
-  renderContent() {
-    //this function renders the Content component and passes all neccesary props to display item data
-    return (
-      <ContentDisplay
-        parts={this.state.itemParts}
-        currentPart={this.state.currentPart}
-        customer={this.state.currentItem.name}
-        handleNext={this.handleNext}
-        handlePrev={this.handlePrev}
-        onDelete={this.onDelete}
-        updateValue={this.updateValue}
-        onCreateFeature={this.onCreateFeature}
-        onSaveData={this.onSaveData}
-      />
-    );
-  }
-
   render() {
     return (
-      <div>
-        <NavBar />
-        {//this condition statement prevents App crashing when props sent to Content are of value null, or empty
-        this.state.itemParts.length >= 1 && this.renderContent()}
+      <React.Fragment>
+        <NavBar menu={this.menu} />
 
-        <SideBar
-          selected={this.state.selectionState}
-          handleClick={this.handleClick}
-          items={this.state.selectedItems}
-          renderData={this.renderData}
-          tabState={this.state.tabState}
-        />
-      </div>
+        <div className="container-fluid">
+          <ContentDisplay
+            parts={this.state.itemParts}
+            currentPart={this.state.currentPart}
+            customer={this.state.currentItem.name}
+            handleNext={this.handleNext}
+            handlePrev={this.handlePrev}
+            onDelete={this.onDelete}
+            updateValue={this.updateValue}
+            onCreateFeature={this.onCreateFeature}
+            onSaveData={this.onSaveData}
+            opened={this.state.openedContent}
+          />
+
+          <SideBar
+            selected={this.state.selectionState}
+            handleClick={this.handleClick}
+            items={this.state.selectedItems}
+            renderData={this.renderData}
+            tabState={this.state.tabState}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
