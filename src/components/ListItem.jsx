@@ -8,8 +8,8 @@ class ListItem extends Component {
     if (this.props.active) style = { backgroundColor: "#d1d1d1" };
 
     return (
-      <div className="listItem move" style={style}>
-        <table className="table table-sm table-borderless">
+      <div className="listItem " style={style}>
+        <table>
           <tr>
             <th>
               <a href="#">{this.props.customer}</a>

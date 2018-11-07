@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import ListItem from "./ListItem";
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const list = this.props.items.map((item, index) => {
+    let {
+      handleClick,
+      selected,
+      items,
+      open,
+      renderData,
+      tabState
+    } = this.props;
+    const list = items.map((item, index) => {
       //takes items passed down by app and formats them into li with event handlers
 
       return (
@@ -15,11 +19,11 @@ class SideBar extends Component {
           key={item.id}
           id={item.id}
           onClick={() => {
-            this.props.handleClick(item.id);
+            handleClick(item.id);
           }}
         >
           <ListItem
-            active={this.props.selected[index]}
+            active={selected[index]}
             customer={item.name}
             parts={item.parts.length}
             complexity={item.complexity}
@@ -28,26 +32,29 @@ class SideBar extends Component {
         </li>
       );
     });
+
+    var style = { width: "0" };
+    if (open) {
+      style = {
+        width: "400px"
+      };
+    }
+
     return (
-      <div
-        id="sidebar"
-        className="split left move"
-        style={{ backgroundColor: "#F8F8F8	" }}
-      >
-        <div className="container">
-          <div>
-            <h5 id="headTitle">Queue ({this.props.items.length})</h5>
-            <br />
-            <Tabs
-              tabState={this.props.tabState}
-              renderData={this.props.renderData}
-            />
+      <React.Fragment>
+        <div id="sidebar" className="" style={style}>
+          <div className="container">
             <div>
-              <ul>{list}</ul>
+              <h5 id="headTitle">Queue ({items.length})</h5>
+              <br />
+              <Tabs tabState={tabState} renderData={renderData} />
+              <div>
+                <ul>{list}</ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

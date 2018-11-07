@@ -2,25 +2,15 @@ import React, { Component } from "react";
 
 class NavBar extends Component {
   render() {
+    let { toggleNav } = this.props;
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark ">
-        <button onClick={() => this.props.menu()}>Menu</button>
-
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav" />
+      <React.Fragment>
+        <div id="nav" className="flex">
+          <div className="flexNav">
+            <p onClick={() => toggleNav()}>Menu</p>
+          </div>
         </div>
-      </nav>
+      </React.Fragment>
     );
   }
 }

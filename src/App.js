@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import SideBar from "./components/SideBar";
 import ContentDisplay from "./components/ContentDisplay";
-import "bootstrap/dist/css/bootstrap.css";
 import NavBar from "./components/NavBar";
 import { getData } from "./components/FakeData";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWrench,
   faCoins,
@@ -20,7 +18,7 @@ library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins);
 class App extends Component {
   constructor(props) {
     super(props);
-    this.menu = this.menu.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -38,27 +36,14 @@ class App extends Component {
       currentPart: {},
       selectionState: [],
       tabState: [1, 0, 0],
-      opened: true,
+      sideBarOpen: true,
       openedContent: false
     };
   }
 
-  menu() {
-    var side = document.getElementById("sidebar");
-    var content = document.getElementById("content");
-    if (this.state.opened) {
-      side.style.height = "0";
-      side.style.padding = "0";
-      // side.style.width = "0%";
-      content.style.width = "100%";
-    } else {
-      side.style.padding = "1rem";
-      side.style.height = "100%";
-      content.style.width = "60%";
-    }
-
+  toggleNav() {
     this.setState({
-      opened: !this.state.opened
+      sideBarOpen: !this.state.sideBarOpen
     });
   }
 
@@ -168,9 +153,16 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar menu={this.menu} />
-
-        <div className="container-fluid">
+        <NavBar toggleNav={this.toggleNav} />
+        <div className="flex">
+          <SideBar
+            open={this.state.sideBarOpen}
+            selected={this.state.selectionState}
+            handleClick={this.handleClick}
+            items={this.state.selectedItems}
+            renderData={this.renderData}
+            tabState={this.state.tabState}
+          />
           <ContentDisplay
             parts={this.state.itemParts}
             currentPart={this.state.currentPart}
@@ -182,14 +174,6 @@ class App extends Component {
             onCreateFeature={this.onCreateFeature}
             onSaveData={this.onSaveData}
             opened={this.state.openedContent}
-          />
-
-          <SideBar
-            selected={this.state.selectionState}
-            handleClick={this.handleClick}
-            items={this.state.selectedItems}
-            renderData={this.renderData}
-            tabState={this.state.tabState}
           />
         </div>
       </React.Fragment>

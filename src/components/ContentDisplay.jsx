@@ -46,18 +46,14 @@ class ContentDisplay extends Component {
 
     return (
       <React.Fragment>
-        <div
-          id="content"
-          className="split right move"
-          style={{ backgroundColor: "#f2f2f2" }}
-        >
+        <div id="content" style={{ backgroundColor: "#f2f2f2" }}>
           {parts.length > 0 && (
-            <div className="container-fluid">
+            <div className="flex">
               <div className="row">
-                <div className="col-lg-8 col-sm-6 col-sm-12">
+                <div className="col">
                   <h5>{this.props.customer}</h5>
                 </div>
-                <div className="col-lg-4 col-sm-3 col-sm-12">
+                <div className="col">
                   <a href="index.js">See Customer History</a>
                 </div>
               </div>
@@ -97,25 +93,7 @@ class ContentDisplay extends Component {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-4" style={{ margin: ".1rem" }}>
-                  <p>Estimated Time:</p>
-                  <p>{new Date().toString().substring(3, 15)}</p>
-                </div>
-                <div className="col-4" style={{ margin: ".1rem" }}>
-                  <p>Customer Deadline:</p>
 
-                  <p>Dec 21 2018</p>
-                </div>
-                <div className="col-2 align-self-end">
-                  <button
-                    style={{ margin: "1rem", padding: "1rem" }}
-                    className="btn btn-primary"
-                  >
-                    Send to Customer
-                  </button>
-                </div>
-              </div>
               <div />
             </div>
           )}
