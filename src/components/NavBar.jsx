@@ -1,11 +1,15 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark ">
-        <button onClick={() => this.props.menu()}>Menu</button>
-
+        <FontAwesomeIcon
+          style={{ fontSize: "25px", color: "white" }}
+          onClick={() => this.props.menu()}
+          icon="bars"
+        />{" "}
         <button
           className="navbar-toggler"
           type="button"

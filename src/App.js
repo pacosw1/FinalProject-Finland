@@ -12,10 +12,11 @@ import {
   faCoins,
   faClock,
   faTachometerAlt,
-  faStar
+  faStar,
+  faBars
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins);
+library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins, faBars);
 
 class App extends Component {
   constructor(props) {
@@ -47,14 +48,14 @@ class App extends Component {
     var side = document.getElementById("sidebar");
     var content = document.getElementById("content");
     if (this.state.opened) {
-      side.style.height = "0";
-      side.style.padding = "0";
+      side.style.width = "0";
+      //side.style.padding = "0";
       // side.style.width = "0%";
       content.style.width = "100%";
     } else {
-      side.style.padding = "1rem";
-      side.style.height = "100%";
-      content.style.width = "60%";
+      //side.style.padding = "1rem";
+      side.style.width = "25%";
+      content.style.width = "75%";
     }
 
     this.setState({

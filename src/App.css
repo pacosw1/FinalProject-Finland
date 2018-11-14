@@ -20,15 +20,17 @@ ul {
 }
 .listItem {
   max-width: none;
+  width: 270px;
   background-color: white;
   padding: 0.2rem 1.3rem;
-
-  width: 100%;
-  height: 100%;
-  width: 100%;
 }
 a:hover {
   background-color: grey;
+}
+
+#sidebar {
+  max-width: none;
+  width: 300px;
 }
 .btn-group {
   background-color: rgba(0, 123, 237, 0.74) !important;

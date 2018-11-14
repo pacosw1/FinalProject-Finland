@@ -36,12 +36,10 @@ class SideBar extends Component {
       >
         <div className="container">
           <div>
-            <h5 id="headTitle">Queue ({this.props.items.length})</h5>
+            <h5>Queue </h5>
+            <p>Sort </p>
             <br />
-            <Tabs
-              tabState={this.props.tabState}
-              renderData={this.props.renderData}
-            />
+
             <div>
               <ul>{list}</ul>
             </div>
@@ -54,33 +52,29 @@ class SideBar extends Component {
 
 function Tabs(props) {
   return (
-    <nav
-      className="move"
-      style={{ marginBottom: "3rem" }}
-      className="nav nav-pills flex-column flex-sm-row"
-    >
+    <div style={{ marginBottom: "2rem" }}>
       <Link
         id={0}
-        title="unread"
+        title="new"
         active={props.tabState[0]}
         renderData={props.renderData}
         class="flex-sm-fill text-sm-center nav-link"
       />
       <Link
         id={1}
-        title="opened"
+        title="in contact"
         active={props.tabState[1]}
         renderData={props.renderData}
         class="flex-sm-fill text-sm-center nav-link"
       />
       <Link
-        title="completed"
+        title="ready"
         id={2}
         active={props.tabState[2]}
         renderData={props.renderData}
         class="flex-sm-fill text-sm-center nav-link"
       />
-    </nav>
+    </div>
   );
 }
 
@@ -102,3 +96,9 @@ function Link(props) {
 }
 
 export default SideBar;
+/**
+ * <Tabs
+              tabState={this.props.tabState}
+              renderData={this.props.renderData}
+            />
+ */

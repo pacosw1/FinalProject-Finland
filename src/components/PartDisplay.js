@@ -27,32 +27,13 @@ class PartDisplay extends Component {
             <tbody>
               <tr>
                 <td scope="col" style={{ width: "10rem" }}>
-                  <div className="input-group mb-3">
-                    <input
-                      defaultValue={this.props.dims.length}
-                      type="text"
-                      className="form-control"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
+                  {this.props.dims.length}
                 </td>
                 <td scope="col" style={{ width: "10rem" }}>
-                  <div className="input-group mb-3">
-                    <input
-                      defaultValue={this.props.dims.width}
-                      type="text"
-                      className="form-control"
-                    />
-                  </div>
+                  {this.props.dims.width}
                 </td>
                 <td scope="col" style={{ width: "10rem" }}>
-                  <div className="input-group mb-3">
-                    <input
-                      defaultValue={this.props.dims.thickness}
-                      type="text"
-                      className="form-control"
-                    />
-                  </div>
+                  {this.props.dims.thickness}
                 </td>
               </tr>
 
