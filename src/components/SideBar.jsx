@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ListItem from "./ListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class SideBar extends Component {
   constructor(props) {
@@ -7,7 +8,21 @@ class SideBar extends Component {
   }
 
   render() {
-    const list = this.props.items.map((item, index) => {
+    let { isOpen, items } = this.props;
+    var style = {
+      width: "300px"
+    };
+
+    if (isOpen) {
+      style = {
+        width: "300px"
+      };
+    } else {
+      style = {
+        width: "0"
+      };
+    }
+    const list = items.map((item, index) => {
       //takes items passed down by app and formats them into li with event handlers
 
       return (
@@ -29,15 +44,15 @@ class SideBar extends Component {
       );
     });
     return (
-      <div
-        id="sidebar"
-        className="split left move"
-        style={{ backgroundColor: "#F8F8F8	" }}
-      >
+      <div className="sidebar move" style={style}>
         <div className="container">
           <div>
             <h5>Queue </h5>
-            <p>Sort </p>
+
+            <h5>
+              Best{" "}
+              <FontAwesomeIcon style={{ fontSize: "15px" }} icon="caret-down" />
+            </h5>
             <br />
 
             <div>

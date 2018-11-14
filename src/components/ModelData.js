@@ -4,8 +4,11 @@ class ModelData extends Component {
   state = {};
   render() {
     return (
-      <div className="col box">
+      <div className="col ">
         <p>Automated Features</p>
+        <table>
+          <tbody />
+        </table>
       </div>
     );
   }

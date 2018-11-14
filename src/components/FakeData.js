@@ -48,6 +48,236 @@ export function getData() {
       ]
     },
     {
+      id: "h11jbbj21",
+      status: "unread",
+      name: "Luke",
+      complexity: "E",
+      estimatedT: "1",
+      testDetail: "Should display in content view",
+      parts: [
+        {
+          id: "234234",
+          material: "aluminum",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "234234",
+              name: "hole",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        },
+        {
+          id: "9342f",
+          material: "Null",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "54674",
+              name: "Hey",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "h11jbbj21",
+      status: "unread",
+      name: "Luke",
+      complexity: "E",
+      estimatedT: "1",
+      testDetail: "Should display in content view",
+      parts: [
+        {
+          id: "234234",
+          material: "aluminum",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "234234",
+              name: "hole",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        },
+        {
+          id: "9342f",
+          material: "Null",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "54674",
+              name: "Hey",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "h11jbbj21",
+      status: "unread",
+      name: "Luke",
+      complexity: "E",
+      estimatedT: "1",
+      testDetail: "Should display in content view",
+      parts: [
+        {
+          id: "234234",
+          material: "aluminum",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "234234",
+              name: "hole",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        },
+        {
+          id: "9342f",
+          material: "Null",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "54674",
+              name: "Hey",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "h11jbbj21",
+      status: "unread",
+      name: "Luke",
+      complexity: "E",
+      estimatedT: "1",
+      testDetail: "Should display in content view",
+      parts: [
+        {
+          id: "234234",
+          material: "aluminum",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "234234",
+              name: "hole",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        },
+        {
+          id: "9342f",
+          material: "Null",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "54674",
+              name: "Hey",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "h11jbbj21",
+      status: "unread",
+      name: "Luke",
+      complexity: "E",
+      estimatedT: "1",
+      testDetail: "Should display in content view",
+      parts: [
+        {
+          id: "234234",
+          material: "aluminum",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "234234",
+              name: "hole",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        },
+        {
+          id: "9342f",
+          material: "Null",
+          picture: "url/",
+          dimensions: {
+            length: 10,
+            width: 20,
+            thickness: 30
+          },
+          features: [
+            {
+              id: "54674",
+              name: "Hey",
+              quantity: 10,
+              time: 20
+            }
+          ]
+        }
+      ]
+    },
+    {
       id: "h12jbbj2L",
       status: "unread",
       name: "Matthew",

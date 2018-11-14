@@ -44,84 +44,87 @@ class ContentDisplay extends Component {
     const limitReached = index === parts.length - 1;
     const opened = this.props.opened;
 
-    return (
-      <React.Fragment>
-        <div
-          id="content"
-          className="split right move"
-          style={{ backgroundColor: "#f2f2f2" }}
-        >
-          {parts.length > 0 && (
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-lg-8 col-sm-6 col-sm-12">
-                  <h5>{this.props.customer}</h5>
-                </div>
-                <div className="col-lg-4 col-sm-3 col-sm-12">
-                  <a href="index.js">See Customer History</a>
-                </div>
-              </div>
-              <div className="row">
-                <PartDisplay material={currPart.material} dims={dims} />
-                <ModelData />
-              </div>
+    var display = (
+      <div className=" auto start">
+        <p>Choose an item to open order details</p>
+      </div>
+    );
 
-              <div className="row">
-                <div className="col">
-                  <div className="partNav">
-                    <span className="">
-                      Part {+index + 1} out of {parts.length}
-                    </span>
-                    <button
-                      style={{ marginRight: ".5rem" }}
-                      className="btn btn-link"
-                      disabled={index === 0}
-                      onClick={() => this.props.handlePrev(index)}
-                    >
-                      Prev
-                    </button>
-                    <button
-                      className="btn btn-link"
-                      disabled={index === parts.length - 1}
-                      onClick={() => this.props.handleNext(index)}
-                    >
-                      Next
-                    </button>
-                  </div>
-
-                  <Table
-                    onCreateFeature={this.props.onCreateFeature}
-                    onDelete={this.props.onDelete}
-                    features={this.props.currentPart.features}
-                    updateValue={this.props.updateValue}
-                  />
-                </div>
+    if (parts.length > 0) {
+      display = (
+        <div className="content " style={{ width: "100%" }}>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-sm-6 col-sm-12">
+                <h5>{this.props.customer}</h5>
+                <a href="index.js">See Customer History</a>
               </div>
-              <div className="row">
-                <div className="col-4" style={{ margin: ".1rem" }}>
-                  <p>Estimated Time:</p>
-                  <p>{new Date().toString().substring(3, 15)}</p>
-                </div>
-                <div className="col-4" style={{ margin: ".1rem" }}>
-                  <p>Customer Deadline:</p>
+            </div>
 
-                  <p>Dec 21 2018</p>
-                </div>
-                <div className="col-2 align-self-end">
+            <div className="row">
+              <PartDisplay material={currPart.material} dims={dims} />
+            </div>
+            <div className="row">
+              <ModelData />
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <div className="partNav">
+                  <span className="">
+                    Part {+index + 1} out of {parts.length}
+                  </span>
                   <button
-                    style={{ margin: "1rem", padding: "1rem" }}
-                    className="btn btn-primary"
+                    style={{ marginRight: ".5rem" }}
+                    className="btn btn-link"
+                    disabled={index === 0}
+                    onClick={() => this.props.handlePrev(index)}
                   >
-                    Send to Customer
+                    Prev
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    disabled={index === parts.length - 1}
+                    onClick={() => this.props.handleNext(index)}
+                  >
+                    Next
                   </button>
                 </div>
+
+                <Table
+                  onCreateFeature={this.props.onCreateFeature}
+                  onDelete={this.props.onDelete}
+                  features={this.props.currentPart.features}
+                  updateValue={this.props.updateValue}
+                />
               </div>
-              <div />
             </div>
-          )}
+            <div className="row">
+              <div className="col-4" style={{ margin: ".1rem" }}>
+                <p>Estimated Time:</p>
+                <p>{new Date().toString().substring(3, 15)}</p>
+              </div>
+              <div className="col-4" style={{ margin: ".1rem" }}>
+                <p>Customer Deadline:</p>
+
+                <p>Dec 21 2018</p>
+              </div>
+              <div className="col-2 align-self-end">
+                <button
+                  style={{ margin: "1rem", padding: "1rem" }}
+                  className="btn btn-primary"
+                >
+                  Send to Customer
+                </button>
+              </div>
+            </div>
+            <div />
+          </div>
         </div>
-      </React.Fragment>
-    );
+      );
+    }
+
+    return <React.Fragment>{display}</React.Fragment>;
   }
 }
 

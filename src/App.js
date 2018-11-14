@@ -13,10 +13,19 @@ import {
   faClock,
   faTachometerAlt,
   faStar,
-  faBars
+  faBars,
+  faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faWrench, faClock, faTachometerAlt, faStar, faCoins, faBars);
+library.add(
+  faWrench,
+  faClock,
+  faTachometerAlt,
+  faStar,
+  faCoins,
+  faBars,
+  faCaretDown
+);
 
 class App extends Component {
   constructor(props) {
@@ -45,19 +54,6 @@ class App extends Component {
   }
 
   menu() {
-    var side = document.getElementById("sidebar");
-    var content = document.getElementById("content");
-    if (this.state.opened) {
-      side.style.width = "0";
-      //side.style.padding = "0";
-      // side.style.width = "0%";
-      content.style.width = "100%";
-    } else {
-      //side.style.padding = "1rem";
-      side.style.width = "25%";
-      content.style.width = "75%";
-    }
-
     this.setState({
       opened: !this.state.opened
     });
@@ -171,7 +167,16 @@ class App extends Component {
       <React.Fragment>
         <NavBar menu={this.menu} />
 
-        <div className="container-fluid">
+        <div className="flex">
+          <SideBar
+            isOpen={this.state.opened}
+            selected={this.state.selectionState}
+            handleClick={this.handleClick}
+            items={this.state.selectedItems}
+            renderData={this.renderData}
+            tabState={this.state.tabState}
+          />
+
           <ContentDisplay
             parts={this.state.itemParts}
             currentPart={this.state.currentPart}
@@ -183,14 +188,6 @@ class App extends Component {
             onCreateFeature={this.onCreateFeature}
             onSaveData={this.onSaveData}
             opened={this.state.openedContent}
-          />
-
-          <SideBar
-            selected={this.state.selectionState}
-            handleClick={this.handleClick}
-            items={this.state.selectedItems}
-            renderData={this.renderData}
-            tabState={this.state.tabState}
           />
         </div>
       </React.Fragment>
