@@ -17,7 +17,7 @@ ul {
 .sidebar {
   background-color: #f8f8f8;
   width: 300px;
-  height: auto;
+  height: 500px;
 }
 .auto {
   display: flex;
@@ -34,8 +34,10 @@ body {
 }
 .flex {
   margin: auto;
+
   display: flex;
   width: 100%;
+  align-items: stretch;
 }
 .content {
   background-color: #f8f8f8;
