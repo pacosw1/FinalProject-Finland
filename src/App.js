@@ -130,7 +130,7 @@ class App extends Component {
     return this.state.items.find(item => item.id === id);
   }
   handleClick(id) {
-    const { items, currentItem, selectionState } = this.state;
+    const { opened, items, currentItem, selectionState } = this.state;
     const index = items.findIndex(x => x.id === id);
     selectionState.fill(0);
     selectionState[index] = 1;
@@ -143,7 +143,8 @@ class App extends Component {
       selectionState: selectionState,
       currentItem: curr,
       itemParts: curr.parts,
-      currentPart: curr.parts[0]
+      currentPart: curr.parts[0],
+      opened: !opened
     });
     //console.log(this.fetchById(id));
   }
@@ -176,19 +177,20 @@ class App extends Component {
             renderData={this.renderData}
             tabState={this.state.tabState}
           />
-
-          <ContentDisplay
-            parts={this.state.itemParts}
-            currentPart={this.state.currentPart}
-            customer={this.state.currentItem.name}
-            handleNext={this.handleNext}
-            handlePrev={this.handlePrev}
-            onDelete={this.onDelete}
-            updateValue={this.updateValue}
-            onCreateFeature={this.onCreateFeature}
-            onSaveData={this.onSaveData}
-            opened={this.state.openedContent}
-          />
+          <div className="contentContainer">
+            <ContentDisplay
+              parts={this.state.itemParts}
+              currentPart={this.state.currentPart}
+              customer={this.state.currentItem.name}
+              handleNext={this.handleNext}
+              handlePrev={this.handlePrev}
+              onDelete={this.onDelete}
+              updateValue={this.updateValue}
+              onCreateFeature={this.onCreateFeature}
+              onSaveData={this.onSaveData}
+              opened={this.state.openedContent}
+            />
+          </div>
         </div>
       </React.Fragment>
     );

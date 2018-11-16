@@ -45,15 +45,22 @@ class ContentDisplay extends Component {
     const opened = this.props.opened;
 
     var display = (
-      <div className=" auto start">
+      <div
+        className=" auto start"
+        style={{
+          marginLeft: "600px",
+          marginTop: "30%",
+          textAlign: "center"
+        }}
+      >
         <p>Choose an item to open order details</p>
       </div>
     );
 
     if (parts.length > 0) {
       display = (
-        <div className="content " style={{ width: "100%" }}>
-          <div className="container">
+        <div className="content scroll ">
+          <div className="container ">
             <div className="row">
               <div className="col-lg-8 col-sm-6 col-sm-12">
                 <h5>{this.props.customer}</h5>
