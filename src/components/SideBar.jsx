@@ -47,12 +47,9 @@ class SideBar extends Component {
       <div className="sidebar move" style={style}>
         <div className="container">
           <div>
-            <h5>Queue </h5>
+            <h6>Queue </h6>
 
-            <h5>
-              Best{" "}
-              <FontAwesomeIcon style={{ fontSize: "15px" }} icon="caret-down" />
-            </h5>
+            <h5 style={{ width: "10rem" }}>Sort by: Best</h5>
             <br />
 
             <div>

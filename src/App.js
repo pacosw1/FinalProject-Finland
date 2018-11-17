@@ -179,6 +179,7 @@ class App extends Component {
           />
           <div className="contentContainer">
             <ContentDisplay
+              data={this.state.currentItem}
               parts={this.state.itemParts}
               currentPart={this.state.currentPart}
               customer={this.state.currentItem.name}

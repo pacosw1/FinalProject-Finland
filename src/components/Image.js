@@ -3,8 +3,8 @@ import React, { Component } from "react";
 function Image(props) {
   const style = {
     marginTop: ".35rem",
-    width: "150px",
-    height: "150px",
+    width: "200px",
+    height: "200px",
     backgroundColor: "grey"
   };
   return (

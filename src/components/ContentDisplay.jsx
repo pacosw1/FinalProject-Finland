@@ -62,23 +62,29 @@ class ContentDisplay extends Component {
         <div className="content scroll ">
           <div className="container ">
             <div className="row">
-              <div className="col-lg-8 col-sm-6 col-sm-12">
+              <div className="col-5">
                 <h5>{this.props.customer}</h5>
                 <a href="index.js">See Customer History</a>
               </div>
             </div>
+            <div className="row">
+              <div className="col ">
+                <Image />
+              </div>
+
+              <div className="col ">
+                <PartDisplay material={currPart.material} dims={dims} />
+              </div>
+              <div className="col item">
+                <ModelData data={this.props.data} />
+              </div>
+            </div>
 
             <div className="row">
-              <PartDisplay material={currPart.material} dims={dims} />
-            </div>
-            <div className="row">
-              <ModelData />
-            </div>
-
-            <div className="row">
-              <div className="col">
+              <div className="col scroll" style={{ maxHeight: "300px" }}>
                 <div className="partNav">
                   <span className="">
+                    <h5 style={{ top: "0" }}>Add Manual Features</h5>
                     Part {+index + 1} out of {parts.length}
                   </span>
                   <button
@@ -106,26 +112,24 @@ class ContentDisplay extends Component {
                 />
               </div>
             </div>
+
             <div className="row">
-              <div className="col-4" style={{ margin: ".1rem" }}>
+              <div className="col-sm-12 col-md-2" style={{ margin: ".1rem" }}>
                 <p>Estimated Time:</p>
                 <p>{new Date().toString().substring(3, 15)}</p>
               </div>
-              <div className="col-4" style={{ margin: ".1rem" }}>
+              <div className="col-sm-12 col-md-2" style={{ margin: ".1rem" }}>
                 <p>Customer Deadline:</p>
 
                 <p>Dec 21 2018</p>
               </div>
-              <div className="col-2 align-self-end">
-                <button
-                  style={{ margin: "1rem", padding: "1rem" }}
-                  className="btn btn-primary"
-                >
+              <div className="col " />
+              <div className="col-sm-12 col-md-2 ">
+                <button style={{ padding: "1rem" }} className="btn btn-primary">
                   Send to Customer
                 </button>
               </div>
             </div>
-            <div />
           </div>
         </div>
       );

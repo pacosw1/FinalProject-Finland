@@ -8,6 +8,21 @@ export function getData() {
       complexity: "E",
       estimatedT: "1",
       testDetail: "Should display in content view",
+      modelData: [
+        {
+          name: "hole",
+          quantity: "3"
+        },
+        {
+          name: "hole",
+          quantity: "3"
+        },
+        {
+          name: "hole",
+          quantity: "3"
+        }
+      ],
+
       parts: [
         {
           id: "234234",

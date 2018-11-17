@@ -5,11 +5,13 @@ ul {
 .box {
   margin: 1rem;
 }
+
 .row {
   padding: 2rem;
   background-color: white;
   margin: 0.4rem 2rem;
 }
+
 .contentContainer {
   width: 100%;
 }
@@ -29,7 +31,7 @@ ul {
   margin: auto;
 }
 body {
-  background-color: #f8f8f8 !important;
+  background-color: white !important;
 }
 .spit {
   display: flex;
@@ -53,15 +55,28 @@ body {
 
   align-items: stretch;
 }
+.item table {
+  text-align: center;
+  margin: auto;
+}
+.item {
+  padding-left: 4rem;
+  border-left: 1px solid;
+  border-color: rgba(14, 14, 14, 0.205);
+}
 .scroll {
+  height: 100%;
   overflow-x: hidden;
   position: fixed;
 }
 .content {
   margin: auto;
   height: 100%;
-  background-color: #f8f8f8;
+  background-color: white;
   width: 100%;
+}
+th {
+  color: #0c0c0cbe;
 }
 .container {
   margin: 2rem;
@@ -69,6 +84,7 @@ body {
 .listItem {
   max-width: none;
   width: 270px;
+  color: #0c0c0ca6;
   background-color: white;
   padding: 0.2rem 1.3rem;
 }

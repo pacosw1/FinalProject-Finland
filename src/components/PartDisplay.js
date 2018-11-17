@@ -6,14 +6,20 @@ class PartDisplay extends Component {
     }
     return (
       <React.Fragment>
-        <div className="col-lg-3 col-md-3 col-sm-12">
-          <Image />
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-3">
-          <table className="table table-borderless table-sm ">
+        <div className="col" />
+        <div className="col">
+          <h5>Model Generated Specs</h5>
+
+          <table className="table table-borderless table-sm specs">
             <thead>
               <tr>
-                <th scope="col">Material</th>
+                <th scope="col">Element</th>
+              </tr>
+              <tr>
+                <td scope="col">{this.props.material}</td>
+              </tr>
+              <tr>
+                <th scope="col">Name</th>
               </tr>
               <tr>
                 <td scope="col">{this.props.material}</td>
