@@ -127,3 +127,6 @@ li:active {
 link {
   max-width: none;
 }
+.moved {
+  transition: 0.1s;
+}

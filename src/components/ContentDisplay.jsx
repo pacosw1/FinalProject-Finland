@@ -56,11 +56,23 @@ class ContentDisplay extends Component {
         <p>Choose an item to open order details</p>
       </div>
     );
+    if (opened) {
+      var push = {
+        marginLeft: "20rem",
+        width: "70%",
+        transition: "0s"
+      };
+    } else {
+      push = {
+        width: "100%",
+        transition: "0.9s"
+      };
+    }
 
     if (parts.length > 0) {
       display = (
         <div className="content scroll ">
-          <div className="container ">
+          <div className="container moved " style={push}>
             <div className="row">
               <div className="col-5">
                 <h5>{this.props.customer}</h5>
@@ -68,7 +80,7 @@ class ContentDisplay extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col ">
+              <div className="col " style={{ marginBottom: "4rem" }}>
                 <Image />
               </div>
 

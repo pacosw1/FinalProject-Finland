@@ -16,11 +16,18 @@ class ModelData extends Component {
     */
     return (
       <React.Fragment>
-        <table className="table table-borderless table-sm ">
+        <table
+          className="table table-borderless table-sm "
+          style={{ textAlign: "left", marginLeft: "2rem" }}
+        >
           <tbody>
             <tr>
-              <td>data</td>
-              <th>Feature</th>
+              <th>Hole</th>
+              <td>x4</td>
+            </tr>
+            <tr>
+              <th>Bending</th>
+              <td>x4</td>
             </tr>
           </tbody>
         </table>

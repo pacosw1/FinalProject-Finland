@@ -143,8 +143,7 @@ class App extends Component {
       selectionState: selectionState,
       currentItem: curr,
       itemParts: curr.parts,
-      currentPart: curr.parts[0],
-      opened: !opened
+      currentPart: curr.parts[0]
     });
     //console.log(this.fetchById(id));
   }
@@ -189,7 +188,7 @@ class App extends Component {
               updateValue={this.updateValue}
               onCreateFeature={this.onCreateFeature}
               onSaveData={this.onSaveData}
-              opened={this.state.openedContent}
+              opened={this.state.opened}
             />
           </div>
         </div>
