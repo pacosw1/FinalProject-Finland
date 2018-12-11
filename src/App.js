@@ -46,10 +46,8 @@ class App extends Component {
       currentItem: {}, //the current item is initialized with
       itemParts: [],
       currentPart: {},
-      selectionState: [],
-      tabState: [1, 0, 0],
-      opened: true,
-      openedContent: false
+
+      opened: true
     };
   }
 

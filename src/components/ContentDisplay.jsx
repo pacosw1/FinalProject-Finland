@@ -59,13 +59,12 @@ class ContentDisplay extends Component {
     if (opened) {
       var push = {
         marginLeft: "20rem",
-        width: "70%",
-        transition: "0s"
+        width: "70%"
       };
     } else {
       push = {
         width: "100%",
-        transition: "0.9s"
+        transition: "0.7s"
       };
     }
 
