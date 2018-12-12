@@ -39,7 +39,6 @@ class Table extends Component {
                 name="quantity"
                 defaultValue={feature.quantity}
                 type="text"
-                onChange={e => this.props.updateValue(e, feature)}
                 className="form-control"
               />
             </div>
@@ -49,7 +48,6 @@ class Table extends Component {
               <input
                 id={feature.id}
                 name="time"
-                onChange={e => this.props.updateValue(e, feature)}
                 defaultValue={feature.time}
                 type="text"
                 className="form-control"
