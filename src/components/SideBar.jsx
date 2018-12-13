@@ -8,7 +8,14 @@ class SideBar extends Component {
   }
 
   render() {
-    let { isOpen, items } = this.props;
+    let {
+      isOpen,
+      items,
+      onSortClick,
+      sortField,
+      currIndex,
+      checkId
+    } = this.props;
     var style = {
       width: "300px"
     };
@@ -22,7 +29,8 @@ class SideBar extends Component {
         width: "0"
       };
     }
-    const list = items.map((item, index) => {
+
+    const list = items.map(item => {
       //takes items passed down by app and formats them into li with event handlers
 
       return (
@@ -34,10 +42,12 @@ class SideBar extends Component {
           }}
         >
           <ListItem
-            active={this.props.selected[index]}
+            id={item.id}
+            checkId={checkId}
             customer={item.name}
             parts={item.parts.length}
             complexity={item.complexity}
+            profit={item.profit}
             estimatedT={item.estimatedT}
           />
         </li>
@@ -47,9 +57,8 @@ class SideBar extends Component {
       <div className="sidebar move" style={style}>
         <div className="container">
           <div>
-            <h6>Queue </h6>
-
-            <h5 style={{ width: "10rem" }}>Sort by: Best</h5>
+            <h5>Queue </h5>
+            <Sort selected={sortField} onSortClick={onSortClick} />
             <br />
 
             <div>
@@ -57,6 +66,42 @@ class SideBar extends Component {
             </div>
           </div>
         </div>
+      </div>
+    );
+  }
+}
+
+class Sort extends Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+    this.state = {
+      choices: ["Best", "Worst", "Most Recent", "Complexity", "Estimated Time"],
+      selected: "Best"
+    };
+  }
+  onClick(index) {
+    this.setState({
+      selected: this.state.choices[index]
+    });
+  }
+  render() {
+    let { onSortClick } = this.props;
+    return (
+      <div>
+        <h6>Sort By</h6> <br />
+        <select
+          name="name"
+          className="custom-select"
+          defaultValue={this.state.choices[0]}
+          onChange={e => onSortClick(e.target.value)}
+        >
+          <option>Best</option>
+          <option>Worst</option>
+          <option>Most Recent</option>
+          <option> Complexity</option>
+          <option>EstimatedTime</option>
+        </select>
       </div>
     );
   }
@@ -113,4 +158,24 @@ export default SideBar;
               tabState={this.props.tabState}
               renderData={this.props.renderData}
             />
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="input-group mb-3">
+        <input
+          name="quantity"
+          placeholder={"Search Here"}
+          type="text"
+          className="form-control"
+        />
+      </div>
  */

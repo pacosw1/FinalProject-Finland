@@ -34,19 +34,21 @@ class App extends Component {
     this.fetchById = this.fetchById.bind(this); //bind methods to ensure proper event handling function
     this.handleClick = this.handleClick.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.sortList = this.sortList.bind(this);
     this.updateValue = this.updateValue.bind(this);
     this.onCreateFeature = this.onCreateFeature.bind(this);
     this.onSaveData = this.onSaveData.bind(this);
+    this.onSortClick = this.onSortClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.renderData = this.renderData.bind(this);
     this.state = {
       items: [], //offers retrieved from fake data base.
-      selectedItems: [],
+      currIndex: null,
       currentItem: {}, //the current item is initialized with
       itemParts: [],
       currentPart: {},
-
+      sort: "best",
       opened: true
     };
   }
@@ -57,7 +59,28 @@ class App extends Component {
     });
   }
 
-  sortList(field) {}
+  sortList(field) {
+    let { selectedItems } = this.state;
+    let sorted = [...selectedItems];
+    if (field === "Best") {
+      sorted.sort(function(a, b) {
+        return b.profit - a.profit;
+      });
+    } else if (field === "Worst") {
+      sorted.sort(function(a, b) {
+        return a.profit - b.profit;
+      });
+    }
+    console.log("soreted");
+    console.log(sorted);
+    this.setState({
+      items: sorted
+    });
+  }
+
+  onSortClick(field) {
+    this.sortList(field);
+  }
 
   renderData(data, id) {
     const updatedTabState = new Array(3).fill(0);
@@ -142,6 +165,7 @@ class App extends Component {
     this.setState({
       selectionState: selectionState,
       currentItem: curr,
+      currIndex: index,
       itemParts: curr.parts,
       currentPart: curr.parts[0]
     });
@@ -170,11 +194,13 @@ class App extends Component {
         <div className="flex">
           <SideBar
             isOpen={this.state.opened}
-            selected={this.state.selectionState}
+            sortField={this.state.sort}
+            checkId={this.state.currentItem.id}
+            currIndex={this.state.currIndex}
             handleClick={this.handleClick}
-            items={this.state.selectedItems}
+            items={this.state.items}
             renderData={this.renderData}
-            tabState={this.state.tabState}
+            onSortClick={this.onSortClick}
           />
           <div className="contentContainer">
             <ContentDisplay

@@ -5,10 +5,11 @@ class ListItem extends Component {
   render() {
     var style = {};
 
-    if (this.props.active) style = { backgroundColor: "#d1d1d1" };
+    if (this.props.checkId === this.props.id)
+      style = { backgroundColor: "#d1d1d1" };
 
     return (
-      <div className="listItem move" style={style}>
+      <div className="listItem moved" style={style}>
         <table className="table table-sm table-borderless">
           <tr>
             <th>
@@ -29,7 +30,7 @@ class ListItem extends Component {
             <FontAwesomeIcon icon="clock" />
           </th>
           <tr>
-            <td>50%</td>
+            <td>{this.props.profit}%</td>
             <td>{this.props.parts}</td>
             <td>{this.props.complexity}</td>
             <td>{this.props.estimatedT}</td>
