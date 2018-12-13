@@ -25,6 +25,7 @@ class Table extends Component {
               className="custom-select"
               defaultValue={feature.name}
               onChange={e => this.props.updateValue(e, feature)}
+              placeholder={"Choose a feature"}
             >
               <option>{feature.name}</option>
               <option>Punch Destroy Holes</option>

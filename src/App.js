@@ -121,7 +121,7 @@ class App extends Component {
   onCreateFeature() {
     const newFeature = {
       id: Date.now(),
-      name: "",
+      name: "Hole",
       quantity: "",
       time: ""
     };
@@ -191,7 +191,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar menu={this.menu} />
 
-        <div className="flex">
+        <div className="flex ">
           <SideBar
             isOpen={this.state.opened}
             sortField={this.state.sort}
@@ -202,7 +202,7 @@ class App extends Component {
             renderData={this.renderData}
             onSortClick={this.onSortClick}
           />
-          <div className="contentContainer">
+          <div className="contentContainer ">
             <ContentDisplay
               data={this.state.currentItem}
               parts={this.state.itemParts}
@@ -222,4 +222,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

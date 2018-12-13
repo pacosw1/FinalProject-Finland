@@ -9,7 +9,7 @@ class ListItem extends Component {
       style = { backgroundColor: "#d1d1d1" };
 
     return (
-      <div className="listItem moved" style={style}>
+      <div className="listItem moved " style={style}>
         <table className="table table-sm table-borderless">
           <tr>
             <th>
